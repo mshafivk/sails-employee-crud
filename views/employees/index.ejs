@@ -1,0 +1,28 @@
+
+<div class="container">
+<div class="panel panel-primary">
+  <!-- Default panel contents -->
+  <div class="panel-heading">Employee Details</div>
+<table class="table" data-height="10">
+    <thead>
+        <tr>
+            <th data-field="name">Employee Name</th>
+            <th data-field="age">Age</th>
+            <th data-field="email">Email</th>
+            <th data-field="mobile">Mobile</th>
+            <th>&nbsp;</th>
+             <th>&nbsp;</th>
+             <th>&nbsp;</th>
+        </tr>
+    </thead>
+    <tbody>
+        <% _.each(employees,function(employee){%>
+        <tr data-id="<%= employee.id %>" data-model="employee"><td><%= employee.name %></td><td><%= employee.age %></td><td><%= employee.email %></td><td><%= employee.mobile %></td><td><a class="btn btn-primary btn-sm" href="/employees/show/<%= employee.id %>"> <span class="glyphicon glyphicon-search"></span>&nbsp;Show</a></td>
+            <td><a class="btn btn-warning btn-sm" href="/employees/edit/<%= employee.id %>"><span class="glyphicon glyphicon-edit"></span>&nbsp;Edit</a></td>
+            <td><form action="/employees/delete/<%= employee.id %>" method="post"><input type="hidden" name="_method" value="delete"/><button type="submit" class="btn btn-danger btn-sm"><span class="glyphicon glyphicon-remove"></span>&nbsp;Delete</button><input type="hidden" name="_csrf" value="<%= _csrf%>"></form></td>
+        </tr>
+       <% });%>
+    </tbody>
+</table>
+</div>
+</div>
